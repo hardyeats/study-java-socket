@@ -24,7 +24,7 @@ public class BruteForceCoding {
     public static int encodeIntBigEndian(byte[] dst, long val, int offset, int size) {
         System.out.println("val = " + val);
         for(int i = 0; i < size; i++) {
-            byte b = (byte) (val >> ((size - i - 1) * Byte.SIZE));
+            byte b = (byte) (val >> ((size - i - 1) * Byte.SIZE)); // 왼쪽부터 비트 8개 씩을 추출
             System.out.println("message[" + offset + "] = " + b);
             dst[offset++] = b;
         }
