@@ -4,13 +4,12 @@ import java.util.Random;
 
 public class ByteTest {
 
+    private final int BYTEMASK = 0b1111_1111;
 
     @Test
     public void testByteMaskAndTypeCasting() {
 
-
         final int ARRAY_SIZE = 8;
-        final int BYTEMASK = 0b1111_1111;
 
 
         Random r = new Random();
@@ -35,5 +34,34 @@ public class ByteTest {
             );
             System.out.println();
         }
+    }
+
+    @Test
+    public void convertIntToByte() {
+
+        int[] testNumbers = { -1, 0, 126, 127, 128, 129, 256, 257 };
+
+        for(int number : testNumbers) {
+            byte b = (byte) number;
+            System.out.printf("%4d | %32s | %4d \n", number, Integer.toBinaryString(number), b);
+            System.out.printf("%4d | %32s |\n", b & BYTEMASK, Integer.toBinaryString(b & BYTEMASK));
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void shiftOperator() {
+        int a = 200;
+        System.out.println(getBinaryString(a));
+
+        int b = a >> 2;
+        System.out.println(getBinaryString(b));
+
+        int c = a << 2;
+        System.out.println(getBinaryString(c));
+    }
+
+    private String getBinaryString(int number) {
+        return Integer.toBinaryString(number);
     }
 }
